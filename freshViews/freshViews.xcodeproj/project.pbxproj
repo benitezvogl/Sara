@@ -504,7 +504,7 @@
 				GCC_PREFIX_HEADER = "freshViews/freshViews-Prefix.pch";
 				INFOPLIST_FILE = "freshViews/freshViews-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/sara_dev/libPD/pd-for-ios/libpd/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/SARA/libPD/pd-for-ios/libpd/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -516,7 +516,7 @@
 				GCC_PREFIX_HEADER = "freshViews/freshViews-Prefix.pch";
 				INFOPLIST_FILE = "freshViews/freshViews-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/sara_dev/libPD/pd-for-ios/libpd/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/SARA/libPD/pd-for-ios/libpd/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

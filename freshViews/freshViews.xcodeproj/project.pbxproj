@@ -37,7 +37,6 @@
 		65D2C15616D8005E006170A6 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C15516D8005E006170A6 /* ImageIO.framework */; };
 		65D2C15816D8088F006170A6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C15716D8088F006170A6 /* GLKit.framework */; };
 		65D2C15A16D809F2006170A6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C15916D809F2006170A6 /* OpenGLES.framework */; };
-		65D2C17616D97532006170A6 /* libpd-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C16116D9749C006170A6 /* libpd-ios.a */; };
 		65D2C17816D975F4006170A6 /* sara_01.pd in Resources */ = {isa = PBXBuildFile; fileRef = 65D2C17716D975F4006170A6 /* sara_01.pd */; };
 		65D2C18916D97900006170A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C18816D97900006170A6 /* AudioToolbox.framework */; };
 		65D2C19016D98305006170A6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2C18F16D98305006170A6 /* CoreMotion.framework */; };
@@ -71,33 +70,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		65D2C16016D9749C006170A6 /* PBXContainerItemProxy */ = {
+		FA6B759318209D18004BD09F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65D2C15B16D9749C006170A6 /* libpd.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = "libpd-ios";
 		};
-		65D2C16216D9749C006170A6 /* PBXContainerItemProxy */ = {
+		FA6B759518209D18004BD09F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65D2C15B16D9749C006170A6 /* libpd.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 119013AB1486450C00086F19;
 			remoteInfo = "libpd-osx";
 		};
-		65D2C17416D9752A006170A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 65D2C15B16D9749C006170A6 /* libpd.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "libpd-ios";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		65B3008517DFF24500248683 /* single_dancer568_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = single_dancer568_320.png; path = "../../../New Images/single_dancer568_320.png"; sourceTree = "<group>"; };
-		65B3008717DFF4F100248683 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar.png; path = "../../../New Images/bar.png"; sourceTree = "<group>"; };
-		65B3008817DFF4F100248683 /* burger_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger_empty.png; path = "../../../New Images/burger_empty.png"; sourceTree = "<group>"; };
+		65B3008717DFF4F100248683 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		65B3008817DFF4F100248683 /* burger_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burger_empty.png; sourceTree = "<group>"; };
 		65B3008917DFF4F100248683 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = burger.png; path = "../../../New Images/burger.png"; sourceTree = "<group>"; };
 		65B3008A17DFF4F100248683 /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eye.png; path = "../../../New Images/eye.png"; sourceTree = "<group>"; };
 		65B3008B17DFF4F100248683 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = "../../../New Images/gear.png"; sourceTree = "<group>"; };
@@ -130,7 +122,7 @@
 		65D2C15516D8005E006170A6 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		65D2C15716D8088F006170A6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		65D2C15916D809F2006170A6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		65D2C15B16D9749C006170A6 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = "../libPD/pd-for-ios/libpd/libpd.xcodeproj"; sourceTree = "<group>"; };
+		65D2C15B16D9749C006170A6 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = "../../SARA/libPD/pd-for-ios/libpd/libpd.xcodeproj"; sourceTree = "<group>"; };
 		65D2C17716D975F4006170A6 /* sara_01.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sara_01.pd; sourceTree = "<group>"; };
 		65D2C18816D97900006170A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		65D2C18F16D98305006170A6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -173,7 +165,6 @@
 				65D2C19216D9A148006170A6 /* MediaPlayer.framework in Frameworks */,
 				65D2C19016D98305006170A6 /* CoreMotion.framework in Frameworks */,
 				65D2C18916D97900006170A6 /* AudioToolbox.framework in Frameworks */,
-				65D2C17616D97532006170A6 /* libpd-ios.a in Frameworks */,
 				65D2C15A16D809F2006170A6 /* OpenGLES.framework in Frameworks */,
 				65D2C15816D8088F006170A6 /* GLKit.framework in Frameworks */,
 				65D2C15616D8005E006170A6 /* ImageIO.framework in Frameworks */,
@@ -296,11 +287,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		65D2C15C16D9749C006170A6 /* Products */ = {
+		FA6B758F18209D18004BD09F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65D2C16116D9749C006170A6 /* libpd-ios.a */,
-				65D2C16316D9749C006170A6 /* libpd-osx.a */,
+				FA6B759418209D18004BD09F /* libpd-ios.a */,
+				FA6B759618209D18004BD09F /* libpd-osx.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,7 +310,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				65D2C17516D9752A006170A6 /* PBXTargetDependency */,
 			);
 			name = freshViews;
 			productName = freshViews;
@@ -348,7 +338,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 65D2C15C16D9749C006170A6 /* Products */;
+					ProductGroup = FA6B758F18209D18004BD09F /* Products */;
 					ProjectRef = 65D2C15B16D9749C006170A6 /* libpd.xcodeproj */;
 				},
 			);
@@ -360,18 +350,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		65D2C16116D9749C006170A6 /* libpd-ios.a */ = {
+		FA6B759418209D18004BD09F /* libpd-ios.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libpd-ios.a";
-			remoteRef = 65D2C16016D9749C006170A6 /* PBXContainerItemProxy */;
+			remoteRef = FA6B759318209D18004BD09F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		65D2C16316D9749C006170A6 /* libpd-osx.a */ = {
+		FA6B759618209D18004BD09F /* libpd-osx.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libpd-osx.a";
-			remoteRef = 65D2C16216D9749C006170A6 /* PBXContainerItemProxy */;
+			remoteRef = FA6B759518209D18004BD09F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -440,14 +430,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		65D2C17516D9752A006170A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "libpd-ios";
-			targetProxy = 65D2C17416D9752A006170A6 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		65D2C13116D7FFD7006170A6 /* InfoPlist.strings */ = {
@@ -524,7 +506,7 @@
 				GCC_PREFIX_HEADER = "freshViews/freshViews-Prefix.pch";
 				INFOPLIST_FILE = "freshViews/freshViews-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/collider/Desktop/SARA/libPD/pd-for-ios/libpd/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/SARA/libPD/pd-for-ios/libpd/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -536,7 +518,7 @@
 				GCC_PREFIX_HEADER = "freshViews/freshViews-Prefix.pch";
 				INFOPLIST_FILE = "freshViews/freshViews-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "/Users/collider/Desktop/SARA/libPD/pd-for-ios/libpd/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/mvv/Desktop/sara/SARA/libPD/pd-for-ios/libpd/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

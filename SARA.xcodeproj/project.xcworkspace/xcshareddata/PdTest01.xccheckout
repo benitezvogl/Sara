@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5A3BFE62-390F-40EC-81D9-3FC91AE9F344</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PdTest01</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>66E635C5-3491-46A4-999D-9124314C700F</key>
+		<string>git://gitorious.org/pdlib/pd-for-ios.git</string>
+		<key>80BEF9F1-6E19-46E6-B580-A8BB12E548A1</key>
+		<string>git://gitorious.org/pdlib/libpd.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SARA/PdTest01.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>66E635C5-3491-46A4-999D-9124314C700F</key>
+		<string>../../..</string>
+		<key>80BEF9F1-6E19-46E6-B580-A8BB12E548A1</key>
+		<string>../../../libpd</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>git://gitorious.org/pdlib/pd-for-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>66E635C5-3491-46A4-999D-9124314C700F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>80BEF9F1-6E19-46E6-B580-A8BB12E548A1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>libpd</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>66E635C5-3491-46A4-999D-9124314C700F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>pd-for-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

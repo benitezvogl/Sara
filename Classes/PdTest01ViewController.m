@@ -18,6 +18,7 @@
 @synthesize circles;
 @synthesize externalDisplayHandler=_externalDisplayHandler;
 
+
 #define degrees(x) (180 * x / M_PI)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -330,12 +331,18 @@
         self.customLayer.transform = CATransform3DMakeScale(1, -1, 1);
     }
     
+    motion = nil;
+    [motion release];
+    attitude = nil;
+    [attitude release];
     obj=nil;
     [obj release];
 }
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     
+   // @autoreleasepool {
+        
     //Not on the main_queue
     NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
     CVImageBufferRef imageBuffer=CMSampleBufferGetImageBuffer(sampleBuffer);
@@ -357,41 +364,47 @@
     CGColorSpaceRelease(colorSpace);
     
     CIImage *beginImage=[CIImage imageWithCGImage:newImage];
-    CIImage *filteredImage;
+    CIImage *filteredImage=nil;
+    CIFilter *sepFilter;
     CIContext *context=[CIContext contextWithOptions:nil];
-    
+
     FVData *obj=[FVData getInstance];
+    CGImageRef cgimg = [context createCGImage:beginImage fromRect:[beginImage extent]];
     
-    filteredImage = nil;
+    
     //cgimg=[context createCGImage:beginImage fromRect:[beginImage extent]];
     if(obj.posterize){
-        CIFilter *sepFilter=[CIFilter filterWithName:@"CIColorPosterize" keysAndValues:
-                             kCIInputImageKey, beginImage,
-                             @"inputLevels", [NSNumber numberWithFloat:6.0], nil];
+        sepFilter=[CIFilter filterWithName:@"CIColorPosterize" keysAndValues:
+                   kCIInputImageKey, beginImage,
+                   @"inputLevels", [NSNumber numberWithFloat:6.0], nil];
         filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
     }
     if(obj.sepia){
-        CIFilter *sepFilter=[CIFilter filterWithName:@"CISepiaTone" keysAndValues:
-                             kCIInputImageKey, beginImage,
-                             @"inputIntensity", [NSNumber numberWithFloat:1.0], nil];
+        sepFilter=[CIFilter filterWithName:@"CISepiaTone" keysAndValues:
+                   kCIInputImageKey, beginImage,
+                   @"inputIntensity", [NSNumber numberWithFloat:1.0], nil];
         filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
     }
     //Color inverter filter
     if(obj.invert){
-        CIFilter *colInvertFilter=[CIFilter filterWithName:@"CIColorInvert" keysAndValues:
-                                   kCIInputImageKey, beginImage, nil];
-        filteredImage=[colInvertFilter valueForKey:@"outputImage"];
+        sepFilter=[CIFilter filterWithName:@"CIColorInvert" keysAndValues:
+                   kCIInputImageKey, beginImage, nil];
+        filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
     }
     //Lines on the screen
     if(obj.line){
-        CIFilter *lineFilter=[CIFilter filterWithName:@"CILineScreen" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:200 Y:200], @"inputAngle", [NSNumber numberWithFloat:90], @"inputWidth", [NSNumber numberWithFloat:100], nil];
-        filteredImage=[lineFilter valueForKey:@"outputImage"];
+        sepFilter=[CIFilter filterWithName:@"CILineScreen" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:200 Y:200], @"inputAngle", [NSNumber numberWithFloat:90], @"inputWidth", [NSNumber numberWithFloat:100], nil];
+        filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
     }
@@ -399,8 +412,9 @@
     
     //NSLog(@"pixl %i", obj.pixl);
     if(obj.pixl==1){
-        CIFilter *pixFilter=[CIFilter filterWithName:@"CIPixellate" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:100 Y:100], @"inputScale", [NSNumber numberWithInt:obj.pixlSize] ,nil];
-        filteredImage=[pixFilter valueForKey:@"outputImage"];
+        sepFilter=[CIFilter filterWithName:@"CIPixellate" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:100 Y:100], @"inputScale", [NSNumber numberWithInt:obj.pixlSize] ,nil];
+        filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
     }
@@ -408,19 +422,20 @@
     if(obj.dot==1){
         //DotScreen filter (change width for size of dots)
         /*
-        CIFilter *dotScreenFilter=[CIFilter filterWithName:@"CIDotScreen" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:200 Y:200], @"inputAngle", [NSNumber numberWithFloat:obj.pixlSize/2], @"inputWidth", [NSNumber numberWithFloat:obj.pixlSize],nil];
-        filteredImage=[dotScreenFilter valueForKey:@"outputImage"];
-        cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
-        beginImage = [CIImage imageWithCGImage:cgimg];
-        */
+         CIFilter *dotScreenFilter=[CIFilter filterWithName:@"CIDotScreen" keysAndValues:kCIInputImageKey, beginImage, @"inputCenter", [CIVector vectorWithX:200 Y:200], @"inputAngle", [NSNumber numberWithFloat:obj.pixlSize/2], @"inputWidth", [NSNumber numberWithFloat:obj.pixlSize],nil];
+         filteredImage=[dotScreenFilter valueForKey:@"outputImage"];
+         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
+         beginImage = [CIImage imageWithCGImage:cgimg];
+         */
         
         //UIImage *image=[[UIImage alloc] initWithCGImage:newImage];
         //CIVector *vector = [CIVector vectorWithX:self.view.bounds.size.width /2.0f Y:self.view.bounds.size.height /2.0f];
-        CIFilter *pixFilter=[CIFilter filterWithName:@"CIPixellate" keysAndValues:
-                             kCIInputImageKey, beginImage,
-                             //@"inputCenter", vector,
-                             @"inputScale", [NSNumber numberWithFloat:obj.pixlSize/2] ,nil];
-        filteredImage=[pixFilter valueForKey:@"outputImage"];
+        sepFilter=[CIFilter filterWithName:@"CIPixellate" keysAndValues:
+                   kCIInputImageKey, beginImage,
+                   //@"inputCenter", vector,
+                   @"inputScale", [NSNumber numberWithFloat:obj.pixlSize/2] ,nil];
+        filteredImage=[sepFilter valueForKey:@"outputImage"];
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
         beginImage = [CIImage imageWithCGImage:cgimg];
         //NSLog(@"%f,%f", beginImage.extent.size.width, beginImage.extent.size.height);
@@ -430,53 +445,55 @@
     
     
     if (filteredImage!=nil) {
-        cgimg=[context createCGImage:filteredImage fromRect:[filteredImage extent]];
-     
+        CGImageRelease(cgimg);
+        cgimg=[context createCGImage:beginImage fromRect:[beginImage extent]];
+        
     }else{
+        CGImageRelease(cgimg);
         cgimg=[context createCGImage:beginImage fromRect:[beginImage extent]];
     }
     
     [self.customLayer performSelectorOnMainThread:@selector(setContents:) withObject:(id)cgimg waitUntilDone:YES];
     
+    UIColor *col = [[self avgColor:cgimg] retain];
+    //NSLog(@"col: %@", col );
+    
+    CGColorRef colorRef = [col CGColor];
+    
+    int _countComponents = CGColorGetNumberOfComponents(colorRef);
+    
+    if (_countComponents == 4) {
+        const CGFloat *_components = CGColorGetComponents(colorRef);
+        red     = _components[0];
+        green = _components[1];
+        blue   = _components[2];
+        
+        avg = (red + blue + green)/3.0;
+        
+        //NSLog(@"%f",avg);
+        
+    }
+    [col release];
+    
+    CGImageRelease(newImage);
+    CGImageRelease(cgimg);
+    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+    [pool drain];
+    obj=nil;
+    [obj release];
+    return;
+    
+    
+    
+    
+    
     //UIImage *image=[UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];
 
     //if(obj.ShowValues && obj.ShowColor){
 
-        //- (UIColor *)averageColor:(CGImageRef)cgimg
-        UIColor *col = [[self avgColor:cgimg] retain];
-        //NSLog(@"col: %@", col );
-    
-        CGColorRef colorRef = [col CGColor];
-    
-        int _countComponents = CGColorGetNumberOfComponents(colorRef);
-        
-        if (_countComponents == 4) {
-            const CGFloat *_components = CGColorGetComponents(colorRef);
-            red     = _components[0];
-            green = _components[1];
-            blue   = _components[2];
-            
-            avg = (red + blue + green)/3.0;
-            
-            //NSLog(@"%f",avg);
-            
-        }
-    
-        [col release];
-    //}
-    
-    //Release CGImageRef
-    CGImageRelease(cgimg);
-    CGImageRelease(newImage);
-    //[self.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:YES];
+    //- (UIColor *)averageColor:(CGImageRef)cgimg
     
     
-    //Unlock Image buffer
-    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
-    [pool drain];
-    
-    obj=nil;
-    [obj release];
 }
 
 -(UIColor *)getRGBAsFromImage:(CGImageRef)image atX:(int)xx andY:(int)yy
@@ -506,7 +523,7 @@
                                                  bytesPerRow,
                                                  colorSpace,
                                                  kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
+    //CGColorSpaceRelease(colorSpace);
     CGContextSetBlendMode(context, kCGBlendModeCopy);
     
     // Draw the image
@@ -584,6 +601,8 @@
     
     obj=nil;
     [obj release];
+    devices=nil;
+    [devices release];
     return nil;
 }
 
@@ -596,8 +615,8 @@
     CGContextRef context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
     
     CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), thiscgimg);
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
+    //CGColorSpaceRelease(colorSpace);
+    //CGContextRelease(context);
     
     if(rgba[3] > 0) {
         CGFloat alpha = ((CGFloat)rgba[3])/255.0;
@@ -654,7 +673,6 @@
 }
 -(void)dealloc{
     NSLog(@"dealloc");
-    [self.session release];
     [self.rollLabel release];
     [self.yawLabel release];
     [self.pitchLabel release];

@@ -24,7 +24,7 @@
     UIImageView *_imageView;
     AVCaptureVideoPreviewLayer *_prevLayer;
     
-    CGImageRef cgimg;
+    
     UITapGestureRecognizer *recognizer;
     
     MyCanvas *circles;
@@ -33,11 +33,19 @@
     float red;
     float green;
     float blue;
+    
+
 }
 
 @property(nonatomic,retain)IBOutlet UIImageView *cameraView;
 @property(nonatomic,retain)IBOutlet UIImageView *testView;
 @property(strong, nonatomic)IBOutlet UIView *circles;
+
+
+@property(nonatomic,retain)CIImage *beginImage;
+@property(nonatomic,retain)CIImage *filteredImage;
+@property(nonatomic,retain)CIContext *context;
+@property(nonatomic,retain)CIFilter *sepFilter;
 
 //Views
 @property(nonatomic,retain)CALayer *customLayer;

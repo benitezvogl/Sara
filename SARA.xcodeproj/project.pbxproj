@@ -745,7 +745,7 @@
 				LastUpgradeCheck = 0420;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 35GENTDBMP;
+						DevelopmentTeam = C6556SB56V;
 					};
 				};
 			};
@@ -945,8 +945,8 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chris Yanc (C6556SB56V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chris Yanc (C6556SB56V)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -956,7 +956,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = SARA;
-				PROVISIONING_PROFILE = "D2580063-426E-4742-9A36-8075A54D6553";
+				PROVISIONING_PROFILE = "F3947470-8C37-45C6-AC7E-4BA88C9DE9F4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -970,8 +970,8 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chris Yanc (C6556SB56V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chris Yanc (C6556SB56V)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SARA_Prefix.pch;
@@ -979,7 +979,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = SARA;
-				PROVISIONING_PROFILE = "D2580063-426E-4742-9A36-8075A54D6553";
+				PROVISIONING_PROFILE = "F3947470-8C37-45C6-AC7E-4BA88C9DE9F4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

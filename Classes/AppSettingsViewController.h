@@ -10,6 +10,7 @@
 
 @interface AppSettingsViewController : UIViewController{
     UISegmentedControl *PickCamera;
+    IBOutlet UISwitch *ExternalDeviceSwitch;
     IBOutlet UISwitch *FlipHorizontalSwitch;
     IBOutlet UISwitch *FlipVerticalSwitch;
     IBOutlet UISwitch *ShowValuesSwitch;

@@ -19,7 +19,7 @@
 @synthesize pixl, dot;
 @synthesize pixlSize;
 @synthesize orientation;
-@synthesize ShowValues, ShowColor, showAlert, showAlertHeadphones;
+@synthesize ShowValues, ShowColor, showAlert, showAlertHeadphones, useExternal;
 @synthesize useCamera;
 static FVData *instance =nil;
 
@@ -56,6 +56,9 @@ static FVData *instance =nil;
                 instance.pixlSize = 5;
             }
             
+            instance.useExternal = [[instance.settings stringForKey:@"UseExternal"] boolValue];
+            NSLog(@"UseExternal: %d", instance.useExternal);
+            
             instance.pd = [instance.settings stringForKey:@"PdFile"];
             NSLog(@"PdFile: %@", instance.pd);
             
@@ -91,7 +94,11 @@ static FVData *instance =nil;
     [settings synchronize];
 }
 
-
+-(void)UseExternal:(bool)val {
+    instance.useExternal = val;
+    NSString *key = @"UseExternal";
+    [self SetSettingsBoolValue:key value:val];
+}
 -(void)Posterize:(bool)val {
     instance.posterize = val;
     NSString *key = @"Posterize";

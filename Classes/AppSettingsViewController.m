@@ -67,7 +67,21 @@
     else
         ShowValuesSwitch.on = NO;
     
+    if(obj.useExternal)
+        ExternalDeviceSwitch.on = YES;
+    else
+        ExternalDeviceSwitch.on = NO;
+        
     
+}
+- (IBAction)ChangeExternalDevice:(UISwitch *)sender {
+    FVData *obj=[FVData getInstance];
+    bool val;
+    if(sender.on)
+        val = YES;
+    else
+        val = NO;
+    [obj UseExternal:val];
 }
 
 - (IBAction)CameraChange:(id)sender {
@@ -114,6 +128,7 @@
     [FlipHorizontalSwitch release];
     [ShowValuesSwitch release];
     [FlipOrientationSwitch release];
+    [ExternalDeviceSwitch release];
     [super dealloc];
 }
 - (void)viewDidUnload {

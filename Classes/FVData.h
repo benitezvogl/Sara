@@ -20,6 +20,8 @@
     bool invert;
     bool posterize;
     
+    bool useExternal;
+    
     bool pixl;
     bool dot;
     int pixlSize;
@@ -38,6 +40,7 @@
 @property(readwrite)bool ShowColor;
 @property(readwrite)bool showAlert;
 @property(readwrite)bool showAlertHeadphones;
+@property(readwrite)bool useExternal;
 
 @property(readwrite)bool posterize;
 @property(readwrite)bool sepia;
@@ -65,7 +68,7 @@
 -(void)SetPixelate:(bool)val;
 -(void)SetDots:(bool)val;
 -(void)SetPixelAmt:(int)val;
-
+-(void)UseExternal:(bool)val;
 
 -(void)Invert:(bool)val;
 -(void)Sepia:(bool)val;

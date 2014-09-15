@@ -112,8 +112,8 @@
         //}
         
         //External video setup
-        self.externalDisplayHandler=[[ExternalDisplayHandler alloc]init];
-        self.externalDisplayHandler.delegate=self;
+        
+        
             
         obj=nil;
         [obj release];
@@ -133,7 +133,10 @@
     NSLog(@"Start Everything");
     //..if(![self.session isRunning])
      //   [self.session startRunning];
-    
+    FVData *obj=[FVData getInstance];
+    if(obj.useExternal){
+        self.externalDisplayHandler=[[ExternalDisplayHandler alloc]init];
+        self.externalDisplayHandler.delegate=self;
     if(ExternalDisplayHandler.monitorExists){
         NSLog(@"TV is attached");
         [self.externalDisplayHandler.contentView addSubview:self.view];
@@ -142,7 +145,7 @@
         //[self.view addSubview:self.view];
         NSLog(@"TV is not attached");
     }
-    
+    }
     
     [self setupCapture];
     [motionManager startDeviceMotionUpdates];
@@ -159,7 +162,6 @@
         [alert show];
     }
     
-    FVData *obj=[FVData getInstance];
     if([obj.pd isEqualToString:@"Gyro"] || [obj.pd isEqualToString:@""] || obj.pd.length == 0)
     {
         patch = [PdBase openFile:@"Patch1_PRY.pd" path:[[NSBundle mainBundle] resourcePath]];
@@ -707,8 +709,8 @@
 {
     NSLog(@"TV was Connected");
     
-    
-    
+    FVData *obj=[FVData getInstance];
+    if(obj.useExternal){
     if(self.externalDisplayHandler)
     {
         NSLog(@"external screen of size:%@ ",NSStringFromCGRect(self.externalDisplayHandler.contentView.frame));
@@ -721,6 +723,9 @@
         
         
     }
+    }
+    obj=nil;
+    [obj release];
 }
 
 @end
